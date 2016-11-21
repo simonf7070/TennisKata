@@ -17,6 +17,7 @@ namespace TennisScoring.Tests
         [TestCase("RR", "Love 30")]
         [TestCase("RRR", "Love 40")]
         [TestCase("RRRR", "Game to receiver")]
+        [TestCase("RRS", "15 30")]
         [TestCase("SRSR", "30 all")]
         [TestCase("SRSRSR", "Deuce")]
         [TestCase("SRSRSRS", "Advantage server")]
