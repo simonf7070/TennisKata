@@ -22,6 +22,8 @@ namespace TennisScoring.Tests
         [TestCase("SRSRSRS", "Advantage server")]
         [TestCase("RSRSRSR", "Advantage receiver")]
         [TestCase("RRRSSSRSRSRR", "Game to receiver")]
+        [TestCase("SSSSRR", "Game to server")]
+        [TestCase("RRRRSS", "Game to receiver")]
         public void PlayMatch_CurrentScoreShouldBeCorrect(string scoringSequence, string expected)
         {
             var tennisScorer = new TennisScorer();
