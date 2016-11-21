@@ -2,7 +2,7 @@
 {
     public class TennisScorer
     {
-        public ITennisScore Score { get; private set; }
+        public TennisScore Score { get; private set; }
 
         public TennisScorer()
         {

@@ -1,142 +1,142 @@
 ﻿namespace TennisScoring
 {
-    public class LoveAll : ITennisScore
+    public class LoveAll : TennisScore
     {
-        public string AsString() => "Love all";
-        public ITennisScore ServerScored() => new FifteenLove();
-        public ITennisScore ReceiverScored() => new LoveFifteen();
+        public override string ToString() => "Love all";
+        public override TennisScore ServerScored() => new FifteenLove();
+        public override TennisScore ReceiverScored() => new LoveFifteen();
+    }
+    
+    public class LoveFifteen : TennisScore
+    {
+        public override string ToString() => "Love 15";
+        public override TennisScore ServerScored() => new FifteenAll();
+        public override TennisScore ReceiverScored() => new LoveThirty();
     }
 
-    public class LoveFifteen : ITennisScore
+    public class LoveThirty : TennisScore
     {
-        public string AsString() => "Love 15";
-        public ITennisScore ServerScored() => new FifteenAll();
-        public ITennisScore ReceiverScored() => new LoveThirty();
+        public override string ToString() => "Love 30";
+        public override TennisScore ServerScored() => new FifteenThirty();
+        public override TennisScore ReceiverScored() => new LoveForty();
     }
 
-    public class LoveThirty : ITennisScore
+    public class FifteenThirty : TennisScore
     {
-        public string AsString() => "Love 30";
-        public ITennisScore ServerScored() => new FifteenThirty();
-        public ITennisScore ReceiverScored() => new LoveForty();
+        public override string ToString() => "15 30";
+        public override TennisScore ServerScored() => new ThirtyAll();
+        public override TennisScore ReceiverScored() => new FifteenForty();
     }
 
-    public class FifteenThirty : ITennisScore
+    public class FifteenForty : TennisScore
     {
-        public string AsString() => "15 30";
-        public ITennisScore ServerScored() => new ThirtyAll();
-        public ITennisScore ReceiverScored() => new FifteenForty();
+        public override string ToString() => "15 40";
+        public override TennisScore ServerScored() => new ThirtyForty();
+        public override TennisScore ReceiverScored() => new GameToReceiver();
     }
 
-    public class FifteenForty : ITennisScore
+    public class ThirtyForty : TennisScore
     {
-        public string AsString() => "15 40";
-        public ITennisScore ServerScored() => new ThirtyForty();
-        public ITennisScore ReceiverScored() => new GameToReceiver();
+        public override string ToString() => "30 40";
+        public override TennisScore ServerScored() => new Deuce();
+        public override TennisScore ReceiverScored() => new GameToReceiver();
     }
 
-    public class ThirtyForty : ITennisScore
+    public class Deuce : TennisScore
     {
-        public string AsString() => "30 40";
-        public ITennisScore ServerScored() => new Deuce();
-        public ITennisScore ReceiverScored() => new GameToReceiver();
+        public override string ToString() => "Deuce";
+        public override TennisScore ServerScored() => new AdvantageServer();
+        public override TennisScore ReceiverScored() => new AdvantageReceiver();
     }
 
-    public class Deuce : ITennisScore
+    public class AdvantageReceiver : TennisScore
     {
-        public string AsString() => "Deuce";
-        public ITennisScore ServerScored() => new AdvantageServer();
-        public ITennisScore ReceiverScored() => new AdvantageReceiver();
+        public override string ToString() => "Advantage receiver";
+        public override TennisScore ServerScored() => new Deuce();
+        public override TennisScore ReceiverScored() => new GameToReceiver();
     }
 
-    public class AdvantageReceiver : ITennisScore
+    public class AdvantageServer : TennisScore
     {
-        public string AsString() => "Advantage receiver";
-        public ITennisScore ServerScored() => new Deuce();
-        public ITennisScore ReceiverScored() => new GameToReceiver();
+        public override string ToString() => "Advantage server";
+        public override TennisScore ServerScored() => new GameToServer();
+        public override TennisScore ReceiverScored() => new Deuce();
     }
 
-    public class AdvantageServer : ITennisScore
+    public class ThirtyAll : TennisScore
     {
-        public string AsString() => "Advantage server";
-        public ITennisScore ServerScored() => new GameToServer();
-        public ITennisScore ReceiverScored() => new Deuce();
+        public override string ToString() => "30 all";
+        public override TennisScore ServerScored() => new FortyThirty();
+        public override TennisScore ReceiverScored() => new ThirtyForty();
     }
 
-    public class ThirtyAll : ITennisScore
+    public class FortyThirty : TennisScore
     {
-        public string AsString() => "30 all";
-        public ITennisScore ServerScored() => new FortyThirty();
-        public ITennisScore ReceiverScored() => new ThirtyForty();
+        public override string ToString() => "40 30";
+        public override TennisScore ServerScored() => new GameToReceiver();
+        public override TennisScore ReceiverScored() => new Deuce();
     }
 
-    public class FortyThirty : ITennisScore
+    public class LoveForty : TennisScore
     {
-        public string AsString() => "40 30";
-        public ITennisScore ServerScored() => new GameToReceiver();
-        public ITennisScore ReceiverScored() => new Deuce();
+        public override string ToString() => "Love 40";
+        public override TennisScore ServerScored() => new FifteenForty();
+        public override TennisScore ReceiverScored() => new GameToReceiver();
     }
 
-    public class LoveForty : ITennisScore
+    public class FifteenLove : TennisScore
     {
-        public string AsString() => "Love 40";
-        public ITennisScore ServerScored() => new FifteenForty();
-        public ITennisScore ReceiverScored() => new GameToReceiver();
+        public override string ToString() => "15 love";
+        public override TennisScore ServerScored() => new ThirtyLove();
+        public override TennisScore ReceiverScored() => new FifteenAll();
     }
 
-    public class FifteenLove : ITennisScore
+    public class ThirtyLove : TennisScore
     {
-        public string AsString() => "15 love";
-        public ITennisScore ServerScored() => new ThirtyLove();
-        public ITennisScore ReceiverScored() => new FifteenAll();
+        public override string ToString() => "30 love";
+        public override TennisScore ServerScored() => new FortyLove();
+        public override TennisScore ReceiverScored() => new ThirtyFifteen();
     }
 
-    public class ThirtyLove : ITennisScore
+    public class ThirtyFifteen : TennisScore
     {
-        public string AsString() => "30 love";
-        public ITennisScore ServerScored() => new FortyLove();
-        public ITennisScore ReceiverScored() => new ThirtyFifteen();
+        public override string ToString() => "30 15";
+        public override TennisScore ServerScored() => new FortyFifteen();
+        public override TennisScore ReceiverScored() => new ThirtyAll();
     }
 
-    public class ThirtyFifteen : ITennisScore
+    public class FortyFifteen : TennisScore
     {
-        public string AsString() => "30 15";
-        public ITennisScore ServerScored() => new FortyFifteen();
-        public ITennisScore ReceiverScored() => new ThirtyAll();
+        public override string ToString() => "40 15";
+        public override TennisScore ServerScored() => new GameToReceiver();
+        public override TennisScore ReceiverScored() => new FortyThirty();
     }
 
-    public class FortyFifteen : ITennisScore
+    public class FortyLove : TennisScore
     {
-        public string AsString() => "40 15";
-        public ITennisScore ServerScored() => new GameToReceiver();
-        public ITennisScore ReceiverScored() => new FortyThirty();
+        public override string ToString() => "40 love";
+        public override TennisScore ServerScored() => new GameToServer();
+        public override TennisScore ReceiverScored() => new FortyFifteen();
     }
 
-    public class FortyLove : ITennisScore
+    public class FifteenAll : TennisScore
     {
-        public string AsString() => "40 love";
-        public ITennisScore ServerScored() => new GameToServer();
-        public ITennisScore ReceiverScored() => new FortyFifteen();
+        public override string ToString() => "15 all";
+        public override TennisScore ServerScored() => new ThirtyFifteen();
+        public override TennisScore ReceiverScored() => new FifteenThirty();
     }
 
-    public class FifteenAll : ITennisScore
+    public class GameToServer : TennisScore
     {
-        public string AsString() => "15 all";
-        public ITennisScore ServerScored() => new ThirtyFifteen();
-        public ITennisScore ReceiverScored() => new FifteenThirty();
+        public override string ToString() => "Game to server";
+        public override TennisScore ServerScored() => this;
+        public override TennisScore ReceiverScored() => this;
     }
 
-    public class GameToServer : ITennisScore
+    public class GameToReceiver : TennisScore
     {
-        public string AsString() => "Game to server";
-        public ITennisScore ServerScored() => this;
-        public ITennisScore ReceiverScored() => this;
-    }
-
-    public class GameToReceiver : ITennisScore
-    {
-        public string AsString() => "Game to receiver";
-        public ITennisScore ServerScored() => this;
-        public ITennisScore ReceiverScored() => this;
+        public override string ToString() => "Game to receiver";
+        public override TennisScore ServerScored() => this;
+        public override TennisScore ReceiverScored() => this;
     }
 }

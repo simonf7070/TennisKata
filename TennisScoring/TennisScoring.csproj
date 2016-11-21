@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITennisScore.cs" />
+    <Compile Include="TennisScore.cs" />
     <Compile Include="TennisScores.cs" />
     <Compile Include="TennisScorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

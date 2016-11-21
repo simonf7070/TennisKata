@@ -28,7 +28,7 @@ namespace TennisScoring.Tests
         {
             var tennisScorer = new TennisScorer();
             PlayMatch(tennisScorer, scoringSequence);
-            Assert.That(tennisScorer.Score.AsString(), Is.EqualTo(expected));
+            Assert.That(tennisScorer.Score.ToString(), Is.EqualTo(expected));
         }
         
         private static void PlayMatch(TennisScorer tennisScorer, string scoringSequence)
