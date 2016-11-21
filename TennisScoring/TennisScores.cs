@@ -129,28 +129,14 @@
     public class GameToServer : ITennisScore
     {
         public string AsString() => "Game to server";
-        public ITennisScore ServerScored()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ITennisScore ReceiverScored()
-        {
-            throw new System.NotImplementedException();
-        }
+        public ITennisScore ServerScored() => this;
+        public ITennisScore ReceiverScored() => this;
     }
-    
+
     public class GameToReceiver : ITennisScore
     {
         public string AsString() => "Game to receiver";
-        public ITennisScore ServerScored()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ITennisScore ReceiverScored()
-        {
-            throw new System.NotImplementedException();
-        }
+        public ITennisScore ServerScored() => this;
+        public ITennisScore ReceiverScored() => this;
     }
 }
