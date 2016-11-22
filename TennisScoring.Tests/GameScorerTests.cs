@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
+using TennisScoring.Game;
 
 namespace TennisScoring.Tests
 {
     [TestFixture]
-    public class TennisScorerTests
+    public class GameScorerTests
     {
         [TestCase("", "Love all")]
         [TestCase("S", "15 love")]
@@ -27,22 +28,22 @@ namespace TennisScoring.Tests
         [TestCase("RRRRSS", "Game to receiver")]
         public void PlayMatch_CurrentScoreShouldBeCorrect(string scoringSequence, string expected)
         {
-            var tennisScorer = new TennisScorer();
-            PlayMatch(tennisScorer, scoringSequence);
-            Assert.That(tennisScorer.Score.ToString(), Is.EqualTo(expected));
+            var scorer = new Scorer();
+            PlayMatch(scorer, scoringSequence);
+            Assert.That(scorer.Score.ToString(), Is.EqualTo(expected));
         }
         
-        private static void PlayMatch(TennisScorer tennisScorer, string scoringSequence)
+        private static void PlayMatch(Scorer scorer, string scoringSequence)
         {
             foreach (var point in scoringSequence)
             {
                 switch (point)
                 {
                     case 'S':
-                        tennisScorer.ServerWonPoint();
+                        scorer.ServerWonPoint();
                         break;
                     case 'R':
-                        tennisScorer.ReceiverWonPoint();
+                        scorer.ReceiverWonPoint();
                         break;
                 }
             }

@@ -1,10 +1,10 @@
-﻿namespace TennisScoring
+﻿namespace TennisScoring.Game
 {
-    public class TennisScorer
+    public class Scorer
     {
-        public TennisScore Score { get; private set; }
+        public Score Score { get; private set; }
 
-        public TennisScorer()
+        public Scorer()
         {
             Score = new LoveAll();
         }
