@@ -28,22 +28,22 @@ namespace TennisScoring.Tests
         [TestCase("RRRRSS", "Game to receiver")]
         public void PlayMatch_CurrentScoreShouldBeCorrect(string scoringSequence, string expected)
         {
-            var scorer = new Scorer();
-            PlayMatch(scorer, scoringSequence);
-            Assert.That(scorer.Score.ToString(), Is.EqualTo(expected));
+            var gameScorer = new Scorer();
+            PlayMatch(gameScorer, scoringSequence);
+            Assert.That(gameScorer.ToString(), Is.EqualTo(expected));
         }
         
-        private static void PlayMatch(Scorer scorer, string scoringSequence)
+        private static void PlayMatch(Scorer gameScorer, string scoringSequence)
         {
             foreach (var point in scoringSequence)
             {
                 switch (point)
                 {
                     case 'S':
-                        scorer.ServerWonPoint();
+                        gameScorer.ServerWonPoint();
                         break;
                     case 'R':
-                        scorer.ReceiverWonPoint();
+                        gameScorer.ReceiverWonPoint();
                         break;
                 }
             }

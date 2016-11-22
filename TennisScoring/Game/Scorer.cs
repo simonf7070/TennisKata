@@ -2,21 +2,23 @@
 {
     public class Scorer
     {
-        public Score Score { get; private set; }
-
+        private Score _score;
+        
         public Scorer()
         {
-            Score = new LoveAll();
+            _score = new LoveAll();
         }
 
         public void ServerWonPoint()
         {
-            Score = Score.ServerScored();
+            _score = _score.ServerScored();
         }
 
         public void ReceiverWonPoint()
         {
-            Score = Score.ReceiverScored();
+            _score = _score.ReceiverScored();
         }
+
+        public override string ToString() => _score.ToString();
     }
 }
