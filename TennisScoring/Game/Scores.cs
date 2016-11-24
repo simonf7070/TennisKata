@@ -27,7 +27,7 @@ namespace TennisScoring.Game
     {
         public override string ToString() => GameScores.LoveForty;
         public override Score ServerScored() => new FifteenForty();
-        public override Score ReceiverScored() => new ToReceiver();
+        public override Score ReceiverScored() => new GameToReceiver();
     }
 
     public class FifteenThirty : Score
@@ -41,14 +41,14 @@ namespace TennisScoring.Game
     {
         public override string ToString() => GameScores.FifteenForty;
         public override Score ServerScored() => new ThirtyForty();
-        public override Score ReceiverScored() => new ToReceiver();
+        public override Score ReceiverScored() => new GameToReceiver();
     }
 
     public class ThirtyForty : Score
     {
         public override string ToString() => GameScores.ThirtyForty;
         public override Score ServerScored() => new Deuce();
-        public override Score ReceiverScored() => new ToReceiver();
+        public override Score ReceiverScored() => new GameToReceiver();
     }
 
     public class Deuce : Score
@@ -62,13 +62,13 @@ namespace TennisScoring.Game
     {
         public override string ToString() => GameScores.AdvantageReceiver;
         public override Score ServerScored() => new Deuce();
-        public override Score ReceiverScored() => new ToReceiver();
+        public override Score ReceiverScored() => new GameToReceiver();
     }
 
     public class AdvantageServer : Score
     {
         public override string ToString() => GameScores.AdvantageServer;
-        public override Score ServerScored() => new ToServer();
+        public override Score ServerScored() => new GameToServer();
         public override Score ReceiverScored() => new Deuce();
     }
 
@@ -82,7 +82,7 @@ namespace TennisScoring.Game
     public class FortyThirty : Score
     {
         public override string ToString() => GameScores.FortyThirty;
-        public override Score ServerScored() => new ToReceiver();
+        public override Score ServerScored() => new GameToReceiver();
         public override Score ReceiverScored() => new Deuce();
     }
     
@@ -110,14 +110,14 @@ namespace TennisScoring.Game
     public class FortyFifteen : Score
     {
         public override string ToString() => GameScores.FortyFifteen;
-        public override Score ServerScored() => new ToReceiver();
+        public override Score ServerScored() => new GameToReceiver();
         public override Score ReceiverScored() => new FortyThirty();
     }
 
     public class FortyLove : Score
     {
         public override string ToString() => GameScores.FortyLove;
-        public override Score ServerScored() => new ToServer();
+        public override Score ServerScored() => new GameToServer();
         public override Score ReceiverScored() => new FortyFifteen();
     }
 
@@ -128,14 +128,14 @@ namespace TennisScoring.Game
         public override Score ReceiverScored() => new FifteenThirty();
     }
 
-    public class ToServer : Score
+    public class GameToServer : Score
     {
         public override string ToString() => GameScores.GameToServer;
         public override Score ServerScored() => this;
         public override Score ReceiverScored() => this;
     }
 
-    public class ToReceiver : Score
+    public class GameToReceiver : Score
     {
         public override string ToString() => GameScores.GameToReceiver;
         public override Score ServerScored() => this;

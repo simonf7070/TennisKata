@@ -48,5 +48,12 @@ namespace TennisScoring.Tests
                 }
             }
         }
+
+        [Test]
+        public void CurrentScoreShouldBeCorrect()
+        {
+            var score = new LoveAll().ServerScored().ReceiverScored().ReceiverScored().ReceiverScored().ReceiverScored();
+            Assert.That(score, Is.TypeOf<GameToReceiver>());
+        }
     }
 }
