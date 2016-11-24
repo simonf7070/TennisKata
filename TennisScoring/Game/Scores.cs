@@ -82,7 +82,7 @@ namespace TennisScoring.Game
     public class FortyThirty : Score
     {
         public override string ToString() => GameScores.FortyThirty;
-        public override Score ServerScored() => new GameToReceiver();
+        public override Score ServerScored() => new GameToServer();
         public override Score ReceiverScored() => new Deuce();
     }
     
@@ -110,7 +110,7 @@ namespace TennisScoring.Game
     public class FortyFifteen : Score
     {
         public override string ToString() => GameScores.FortyFifteen;
-        public override Score ServerScored() => new GameToReceiver();
+        public override Score ServerScored() => new GameToServer();
         public override Score ReceiverScored() => new FortyThirty();
     }
 
