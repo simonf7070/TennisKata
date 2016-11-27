@@ -55,5 +55,59 @@ namespace TennisScoring.Tests
             var score = new LoveAll().ServerScored().ReceiverScored().ReceiverScored().ReceiverScored().ReceiverScored();
             Assert.That(score, Is.TypeOf<GameToReceiver>());
         }
+
+        [Test]
+        public void WhenScoreIsFifteenFortyAndReceiverWinsTheNextPointThenShouldBeGameToReceiver()
+        {
+            var currentScore = new FifteenForty();
+            var newScore = currentScore.ReceiverScored();
+            Assert.That(newScore, Is.TypeOf<GameToReceiver>());
+        }
+
+        [TestCaseSource(nameof(ReceiverScores))]
+        public void WhenReceiverWinsNextPointScoreIsExpectedScore(Score currentScore, Score expectedScore)
+        {
+            var newScore = currentScore.ReceiverScored();
+            Assert.IsInstanceOf(expectedScore.GetType(), newScore);
+        }
+
+        static object[] ReceiverScores =
+        {
+            new object[] { new LoveAll(), new LoveFifteen() },
+            new object[] { new LoveFifteen(), new LoveThirty() },
+            new object[] { new LoveThirty(), new LoveForty() },
+            new object[] { new LoveForty(), new GameToReceiver() },
+            new object[] { new FifteenAll(), new FifteenThirty() },
+            new object[] { new FifteenThirty(), new FifteenForty() },
+            new object[] { new FifteenForty(), new GameToReceiver() },
+            new object[] { new ThirtyAll(), new ThirtyForty() },
+            new object[] { new ThirtyForty(), new GameToReceiver() },
+            new object[] { new Deuce(), new AdvantageReceiver() },
+            new object[] { new AdvantageReceiver(), new GameToReceiver() },
+            new object[] { new AdvantageServer(), new Deuce() },
+        };
+
+        [TestCaseSource(nameof(ServerScores))]
+        public void WhenServerWinsNextPointScoreIsExpectedScore(Score currentScore, Score expectedScore)
+        {
+            var newScore = currentScore.ServerScored();
+            Assert.IsInstanceOf(expectedScore.GetType(), newScore);
+        }
+
+        static object[] ServerScores =
+        {
+            new object[] { new LoveAll(), new FifteenLove() },
+            new object[] { new FifteenLove(), new ThirtyLove() },
+            new object[] { new ThirtyLove(), new FortyLove() },
+            new object[] { new FortyLove(), new GameToServer() },
+            new object[] { new FifteenAll(), new ThirtyFifteen() },
+            new object[] { new ThirtyFifteen(), new FortyFifteen() },
+            new object[] { new FortyFifteen(), new GameToServer() },
+            new object[] { new ThirtyAll(), new FortyThirty() },
+            new object[] { new FortyThirty(), new GameToServer() },
+            new object[] { new Deuce(), new AdvantageServer() },
+            new object[] { new AdvantageServer(), new GameToServer() },
+            new object[] { new AdvantageReceiver(), new Deuce() },
+        };
     }
 }
