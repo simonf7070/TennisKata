@@ -7,14 +7,14 @@ namespace TennisScoring.Tests
     public class GameScorerTests
     {
         [TestCaseSource(nameof(ServerScores))]
-        public void WhenServerWinsNextPointScoreIsExpectedScore(Score currentScore, Score expectedScore)
+        public void WhenServerWinsNextPointScoreIsExpectedScore(IScore currentScore, IScore expectedScore)
         {
             var newScore = currentScore.ServerScored();
             Assert.That(newScore, Is.InstanceOf(expectedScore.GetType()));
         }
 
         [TestCaseSource(nameof(ReceiverScores))]
-        public void WhenReceiverWinsNextPointScoreIsExpectedScore(Score currentScore, Score expectedScore)
+        public void WhenReceiverWinsNextPointScoreIsExpectedScore(IScore currentScore, IScore expectedScore)
         {
             var newScore = currentScore.ReceiverScored();
             Assert.That(newScore, Is.InstanceOf(expectedScore.GetType()));

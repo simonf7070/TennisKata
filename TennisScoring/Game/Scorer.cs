@@ -2,7 +2,7 @@
 {
     public class Scorer
     {
-        private Score _score;
+        private IScore _score;
         
         public Scorer()
         {
