@@ -4,23 +4,23 @@ using TennisScoring.Game;
 namespace TennisScoring.Tests
 {
     [TestFixture]
-    public class GameScorerTests
+    public class StandardGameScoreTests
     {
-        [TestCaseSource(nameof(ServerScores))]
+        [TestCaseSource(nameof(ServerScored))]
         public void WhenServerWinsNextPointScoreIsExpectedScore(IScore currentScore, IScore expectedScore)
         {
             var newScore = currentScore.ServerScored();
             Assert.That(newScore, Is.InstanceOf(expectedScore.GetType()));
         }
 
-        [TestCaseSource(nameof(ReceiverScores))]
+        [TestCaseSource(nameof(ReceiverScored))]
         public void WhenReceiverWinsNextPointScoreIsExpectedScore(IScore currentScore, IScore expectedScore)
         {
             var newScore = currentScore.ReceiverScored();
             Assert.That(newScore, Is.InstanceOf(expectedScore.GetType()));
         }
 
-        private static readonly object[] ServerScores =
+        private static readonly object[] ServerScored =
         {
             new object[] { new LoveAll(), new FifteenLove() },
             new object[] { new LoveFifteen(), new FifteenAll() },
@@ -44,7 +44,7 @@ namespace TennisScoring.Tests
             new object[] { new GameToReceiver(), new GameToReceiver() }
         };
 
-        private static readonly object[] ReceiverScores =
+        private static readonly object[] ReceiverScored =
         {
             new object[] { new LoveAll(), new LoveFifteen() },
             new object[] { new LoveFifteen(), new LoveThirty() },

@@ -6,14 +6,16 @@ using TennisScoring.Game;
 namespace TennisScoring.Tests
 {
     [TestFixture]
-    public class GameScorerI18NTests
+    public class GameScoreI18NTests
     {
         [Test]
         public void PlayMatchWithWithCultureUIFrench_CurrentScoreShouldBeCorrect()
         {
+            var score = new LoveAll();
+
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("fr-FR");
-            var gameScorer = new Scorer();
-            Assert.That(gameScorer.ToString(), Is.EqualTo("Aimer tout"));
+
+            Assert.That(score.ToString(), Is.EqualTo("Aimer tout"));
         }
     }
 }
