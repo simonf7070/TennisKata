@@ -60,4 +60,4 @@ A match can be played to the best of 3 sets (a player needs to win 2 sets to win
 the match) or to the best of 5 sets (a player needs to win 3 sets to win the
 match).
 
-Simon
+Local
